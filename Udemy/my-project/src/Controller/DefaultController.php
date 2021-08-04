@@ -2,23 +2,21 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-    #[Route('/default/{name}', name: 'default')]
-    public function index($name): Response
+    #[Route('/', name: 'default')]
+    public function index(): Response
     {
-        return $this-> redirectToRoute('default2');
-    }
+        $users = $this-> getDoctrine()->getRepository(User::class)->findAll();
 
-    #[Route('/default2', name: 'default2')]
-    public function index2(): Response
-    {
-        return new Response('i am from default2 route!');
+        return $this->render('default/index.html.twig', [
+            'controller_name' => 'DefaultController',
+            'users' => $users,
+        ]);
     }
 }
-
-
