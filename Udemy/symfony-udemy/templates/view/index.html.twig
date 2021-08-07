@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Hello udemy {{SomeName}}</h1>
+<h1>{{object.name}}</h1>
+<ul>
+{% for array in a %}
+    <li>{{array}}</li>
+{% endfor %}
+<ul>
+{% endblock %}
