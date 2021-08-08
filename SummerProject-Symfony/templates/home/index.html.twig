@@ -3,5 +3,114 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<h1>Welcome</h1>
+
+<!-- Start orbit  -->
+  
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="assets/images/Test.jpg" alt="First slide">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  
+  
+  <!-- End orbit -->
+  <hr><br>
+  
+  <h1 class="text-center">PRODUCTS</h1>
+       
+  <!-- Aside -->
+  <!------ Include the above in your HEAD tag ---------->
+
+  <div class="container">
+      <div class="row">
+          <div class="col-md-2">
+            <h3 class="text-center">Category</h3>
+            <hr>
+              <ul>
+                  <li class="list-group-item"><a href="#"><i class="fa fa-home fa-fw"></i>Category 1</a></li>
+                  <li class="list-group-item"><a href=""><i class="fa fa-list-alt fa-fw"></i>Category 2</a></li>
+                  <li class="list-group-item"><a href=""><i class="fa fa-file-o fa-fw"></i>Category 3</a></li>
+                  <li class="list-group-item"><a href=""><i class="fa fa-bar-chart-o fa-fw"></i>Category 4</a></li>
+                  <li class="list-group-item"><a href=""><i class="fa fa-table fa-fw"></i>Category 5</a></li>
+                  <li class="list-group-item"><a href=""><i class="fa fa-tasks fa-fw"></i>Category 6</a></li>
+                  <li class="list-group-item"><a href=""><i class="fa fa-calendar fa-fw"></i>Category 7</a></li>
+              </ul>
+          </div>
+
+          <div class="col-md-10 well">
+            <div class="container">
+              <div class="row">
+                    {% for Product in Products %}
+                    <div class="col-md-4 mt-5">
+                      <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="assets/images/Test.jpg" alt="Card image cap">
+                        <h4><a href="">{{Product.title}}</a></h4>
+                      <div class="card-body">
+                        <p>Author: {{Product.author}}</p>
+                        <p>{{Product.content}}</p>
+                        <h5>Price: {{Product.price}}</h5>
+                      <a class="btn btn-primary btn-lg btn-block" href="">Buy</a>
+                    </div>
+                  </div>
+                </div>
+                    {% endfor %}
+              </div>
+          </div>
+      </div>
+        <nav aria-label="...">
+          <br>
+                <ul class="pagination">
+                <li class='page-item'><a class='page-link' href='index.php?product&page=$page'>Next</a></li>
+                <li class='page-item'><a class='page-link' href=''>Next</a></li>
+
+                </ul>
+              </nav>
+  </div>
+  
+  <!-- End aside -->
+  
+  
+  
+  <!--End Products -->
+  
+  <!-- Best buy-->      
+  
+  <br>
+  <div class="text-center">
+    <h2>Best buy products</h2>
+    <hr>
+  </div>
+  <div class="container">
+        <div class="row">
+          <div class="col-md-4 mt-5">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="assets/images/Test.jpg" alt="Card image cap">
+              <h4><a href="">Test</a></h4>
+              <div class="card-body">
+                <p> Author:test </p>
+                <p>test test test test test test test test test test test test </p>
+                <h5>Price:test</h5>
+                <a class="btn btn-primary btn-lg btn-block" href="">See more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  </div>
+
+
 {% endblock %}
