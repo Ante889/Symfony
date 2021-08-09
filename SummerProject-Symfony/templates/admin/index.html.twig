@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<a href="index.php?productAdd" class="btn btn-primary">Add product</a>
+
+<div class="container">
+
+   <table class="table table-bordered table-striped table-responsive-stack" id="tableOne">
+      <thead class="thead-dark">
+         <tr>
+      <th class="">TIITLE</th>
+      <th class="">AUTHOR</th>
+      <th class="">IMAGE</th>
+      <th class="">PRICE</th>
+      <th class="">CATEGORY</th>
+      <th class="">QUANTITY</th>
+      <th class="">CONTENT</th>
+      <th></th>
+         </tr>
+      </thead>
+      <tbody>
+    {% for Product in Products %}
+    <tr>
+      <td class="text-center" ><h5>{{Product.title}}</h5></td>
+      <td class="text-center"><h5>{{Product.author}}</h5></td>
+      <td class="text-center" ><img style="max-width:120px" src="images/{{Product.image}}"></td>
+      <td class="text-center" ><h5>{{Product.price}}$</h5></td>
+      <td class="text-center" ><h5>{{Product.category}}</h5></td>
+      <td class="text-center" ><h5>{{Product.quantity}}</h5></td>
+      <td class="text-center" ><h5>{{Product.content}}</h5></td>
+      <td class="text-center"><a href="index.php?productChange=<?php echo $result[$i]['id'];?>" class="btn btn-primary">Change</a>
+      <hr><a href="index.php?admin&delete=<?php echo $result[$i]['id'];?>" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<h3>Database diagram</h3>
+<hr>
+<img style="" src="Diagram.png">
+<hr>
+   
+
+
+</div>
+<!-- /.container -->
+{% endblock %}
