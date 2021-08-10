@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+  <hr><br>
+  
+  <h1 class="text-center">PRODUCTS</h1>
+       
+  <!-- Aside -->
+  <!------ Include the above in your HEAD tag ---------->
+
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12 well">
+            <div class="container">
+              <div class="row">
+                    {% for Product in Products %}
+                    <div class="col-md-4 mt-5">
+                      <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="assets/images/Test.jpg" alt="Card image cap">
+                        <h4><a href="">{{Product.title}}</a></h4>
+                      <div class="card-body">
+                        <p>Author: {{Product.author}}</p>
+                        <p>{{Product.content}}</p>
+                        <h5>Price: {{Product.price}}</h5>
+                      <a class="btn btn-primary btn-lg btn-block" href="">Buy</a>
+                    </div>
+                  </div>
+                </div>
+                    {% endfor %}
+              </div>
+          </div>
+      </div>
+  </div>
+
+{% endblock %}
