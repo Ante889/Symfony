@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminAddController!{% endblock %}
+
+{% block body %}
+<br>
+<a href="{{path('admin')}}" class="btn btn-danger">Back</a>
+<br><br>
+{{form(CreateForm)}}
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{message}}
+    </div>
+{% endfor %}
+
+{% endblock %}

@@ -3,7 +3,12 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
-<a href="index.php?productAdd" class="btn btn-primary">Add product</a>
+{% for message in app.flashes('delete') %}
+    <div class="alert alert-danger">
+        {{message}}
+    </div>
+{% endfor %}
+<a href="{{ path ('create')}}" class="btn btn-primary">Add product</a>
 
 <div class="container">
 
@@ -30,8 +35,8 @@
       <td class="text-center" ><h5>{{Product.category}}</h5></td>
       <td class="text-center" ><h5>{{Product.quantity}}</h5></td>
       <td class="text-center" ><h5>{{Product.content}}</h5></td>
-      <td class="text-center"><a href="index.php?productChange=<?php echo $result[$i]['id'];?>" class="btn btn-primary">Change</a>
-      <hr><a href="index.php?admin&delete=<?php echo $result[$i]['id'];?>" class="btn btn-danger">Delete</a></td>
+      <td class="text-center"><a href="{{ path ('update',{id: Product.id})}}" class="btn btn-primary">Change</a>
+      <hr><a href="{{ path ('delete',{id: Product.id})}}" class="btn btn-danger">Delete</a></td>
     </tr>
     {% endfor %}
   </tbody>
