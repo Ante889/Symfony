@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Products;
 use Doctrine\Common\Collections\Expr\Value;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,7 +25,8 @@ class ProductType extends AbstractType
                     'placeholder' => 'Set Author'
                 ],
             ]) 
-            ->add('image', null, [
+            ->add('image', FileType::class, [
+                'mapped' => false,
                 'attr' => [
                     'placeholder' => 'Add image'
                 ],

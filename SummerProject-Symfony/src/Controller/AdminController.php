@@ -32,6 +32,16 @@ class AdminController extends AbstractController
         
         if ($Form->isSubmitted() && $Form->isValid()) { 
             $em=$this->getDoctrine()->getManager();
+            $images= $Form->get('image')->getData();
+
+            if($images){
+                $fileName= md5(uniqid()).'.'. $images->guessClientExtension();
+            }
+            $images->move(
+                $this->getParameter('images_folder'),
+                $fileName
+            );
+            $Products->setImage($fileName);
             $em->persist($Products);
             $em->flush();
             $this->addFlash('success','Product Created!');
@@ -57,34 +67,11 @@ class AdminController extends AbstractController
     #[Route('/update/{id}', name: 'update')]
     public function Update($id, Request $request){
         
-        $product=new Products();
-        $product=$this->getDoctrine()->getRepository(Products::class)->find($id);
-        $Form =$this->createFormBuilder($product) 
-        ->add('title') 
-        ->add('author')
-        ->add('image')
-        ->add('price')
-        ->add('category')
-        ->add('quantity')
-        ->add('content')
-        ->add('Update', SubmitType::class)
-        ->getForm();
 
-        $Form->handleRequest($request);
-
-        if ($Form->isSubmitted() && $Form->isValid()) { 
-            $product = $Form->getData();
-            $em=$this->getDoctrine()->getManager();
-            $em->persist($product);
-            $em->flush();
-            $this->addFlash('updated','Product Updated!');
-            return $this->redirect($request->getUri());
-        }
         
         //Respone
         return $this->render('admin/update.html.twig', [
-            'form' => $Form->createView(),
-            'Product' => $product,
+            
         ]);
     }
 
