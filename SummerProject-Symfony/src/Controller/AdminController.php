@@ -67,11 +67,33 @@ class AdminController extends AbstractController
     #[Route('/update/{id}', name: 'update')]
     public function Update($id, Request $request){
         
+        $product=$this->getDoctrine()->getRepository(Products::class)->find($id);
+        $Form = $this->createForm(ProductUpdateType::class,$product);
+        $Form->handleRequest($request);
+        
+        if ($Form->isSubmitted() && $Form->isValid()) { 
+            $em=$this->getDoctrine()->getManager();
 
+            $images= $Form->get('image')->getData();
+
+            if($images){
+                $fileName= md5(uniqid()).'.'. $images->guessClientExtension();
+            }
+            $images->move(
+                $this->getParameter('images_folder'),
+                $fileName
+            );
+            $product->setImage($fileName);
+            $em->persist($product);
+            $em->flush();
+            $this->addFlash('updated','Product Updated!');
+            return $this->redirect($request->getUri());
+        }
         
         //Respone
         return $this->render('admin/update.html.twig', [
-            
+            'CreateForm' => $Form->createView(),
+            'Product' => $product
         ]);
     }
 

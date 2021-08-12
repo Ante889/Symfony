@@ -21,6 +21,17 @@ class HomeController extends AbstractController
             'Products' => $Products
         ]);
     }
+
+    #[Route('/product/{id}', name: 'product')]
+    public function product(ProductsRepository $pro,$id): Response
+    {
+        $product=$this->getDoctrine()->getRepository(Products::class)->find($id);
+
+        return $this->render('home/product.html.twig', [
+            'Product' => $product
+        ]);
+    }
+
     #[Route('/search', name: 'search')]
     public function search(Request $request): Response
     {

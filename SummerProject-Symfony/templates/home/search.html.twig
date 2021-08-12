@@ -18,13 +18,13 @@
                     {% for Product in Products %}
                     <div class="col-md-4 mt-5">
                       <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="public/assets/images/{{Product.image}}" alt="Card image cap">
+                        <img class="card-img-top" src="../assets/images/{{Product.image}}" alt="Card image cap">
                         <h4><a href="">{{Product.title}}</a></h4>
                       <div class="card-body">
                         <p>Author: {{Product.author}}</p>
                         <p>{{Product.content}}</p>
                         <h5>Price: {{Product.price}}</h5>
-                      <a class="btn btn-primary btn-lg btn-block" href="">Buy</a>
+                      <a class="btn btn-primary btn-lg btn-block" href="{{ path ('product',{id: Product.id})}}">Buy</a>
                     </div>
                   </div>
                 </div>

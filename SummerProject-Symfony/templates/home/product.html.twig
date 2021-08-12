@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <img class="img-thumbnail" src="../assets/images/{{Product.image}}">
+      </div>
+      <div class="col-md-6 ">
+        <h3>{{Product.title}}</h3>
+        <p>{{Product.content}}</p>
+        <h4>Price</h4>
+        <p>{{Product.price}}$</p>
+        <a href="#" class="btn btn-primary btn-lg btn-block">Buy</a>
+    </div>
+  </div><br><br>
+    
+
+
+  <div class="container bootstrap snippets bootdey">
+    <div class="row">
+		<div class="col-md-12">
+		    <div class="blog-comment">
+				<h3 class="">Comments</h3>
+                <hr/>
+				<ul class="comments">
+				<li class="clearfix">
+				  <img src="images/unnamed.png"  class="avatar" alt="">
+				  <div class="post-comments">
+				      <p class="meta">Dec 2, 2021 <a href="#">Someone</a> says : <i class="pull-right"><a href="#"></a></i></p>
+				      <p>
+				          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				          Etiam a sapien odio, sit amet
+				      </p>
+				  </div>
+				</li>
+				<li class="clearfix">
+				  <img src="images/unnamed.png" class="avatar" alt="">
+				  <div class="post-comments">
+				      <p class="meta">Dec 2, 2021 <a href="#">Someone</a> says : <i class="pull-right"><a href="#"></a></i></p>
+				      <p>
+				          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				          Etiam a sapien odio, sit amet
+				      </p>
+				  </div>
+				</li>
+        <li class="clearfix">
+				  <img src="images/unnamed.png" class="avatar" alt="">
+				  <div class="post-comments">
+				      <form action="">
+              <div class="form-group">
+                <input type="text" class="form-control" name="" id="">
+              </div>
+              <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Submit">
+              </div>
+              </form>
+				  </div>
+				</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

@@ -62,7 +62,7 @@
                         <p>Author: {{Product.author}}</p>
                         <p>{{Product.content}}</p>
                         <h5>Price: {{Product.price}}</h5>
-                      <a class="btn btn-primary btn-lg btn-block" href="">Buy</a>
+                      <a class="btn btn-primary btn-lg btn-block" href="{{ path ('product',{id: Product.id})}}">Buy</a>
                     </div>
                   </div>
                 </div>
