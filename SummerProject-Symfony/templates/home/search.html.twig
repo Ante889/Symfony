@@ -19,7 +19,7 @@
                     <div class="col-md-4 mt-5">
                       <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="../assets/images/{{Product.image}}" alt="Card image cap">
-                        <h4><a href="">{{Product.title}}</a></h4>
+                        <h4><a href="{{ path ('product',{id: Product.id})}}">{{Product.title}}</a></h4>
                       <div class="card-body">
                         <p>Author: {{Product.author}}</p>
                         <p>{{Product.content}}</p>
