@@ -14,7 +14,12 @@
         <p>{{Product.content}}</p>
         <h4>Price</h4>
         <p>{{Product.price}}$</p>
+		{% if app.user %}
         <a href="#" class="btn btn-primary btn-lg btn-block">Buy</a>
+		{% endif %}
+		{% if not app.user %}
+        <a href="#" class="btn btn-primary btn-lg btn-block">Login for buy</a>
+		{% endif %}
     </div>
   </div><br><br>
     

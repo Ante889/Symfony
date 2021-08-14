@@ -41,14 +41,21 @@
                     <a class="nav-link" href="{{path('home')}}">Products<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Login</a>
+                    {% if not app.user %}
+                    <a class="nav-link" href="{{path('app_login')}}">Login</a>
+                    {% endif %}
+                    {% if app.user %}
+                    <a class="nav-link" href="{{path('app_logout')}}">Logout</a>
+                    {% endif %}
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" target="_blank" href="https://github.com/Ante889/Symfony/tree/main/SummerProject-Symfony">Code on github</a>
                 </li>
+                {% if is_granted('ROLE_ADMIN') %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{path('admin')}}">Admin</a>
                 </li>
+                {% endif %}
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="POST" action="{{path('search')}}">
                 <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">

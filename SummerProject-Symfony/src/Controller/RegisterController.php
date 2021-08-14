@@ -17,7 +17,7 @@ class RegisterController extends AbstractController
 {
     
     #[Route('/reg', name: 'reg')]
-    public function reg(Request $request): Response
+    public function reg(Request $request, UserPasswordHasherInterface $passwordHasher)
     {
 
         $regForm = $this-> createFormBuilder()
@@ -39,7 +39,7 @@ class RegisterController extends AbstractController
             $input= $regForm->getData();
             $user = new User();
             $user->setEmail($input['email']);
-            $user->setPassword($input['password']);
+            $user->setPassword($passwordHasher->hashPassword($user,$input['password']));
             $em = $this->getDoctrine()->getManager();
             $em-> persist($user);
             $em-> flush();
