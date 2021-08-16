@@ -106,8 +106,23 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/link": {
+        "version": "1.0.0"
+    },
     "psr/log": {
         "version": "2.0.0"
+    },
+    "symfony/apache-pack": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "9d254a22efca7264203eea98b866f16f944b2f09"
+        },
+        "files": [
+            "./public/.htaccess"
+        ]
     },
     "symfony/asset": {
         "version": "v5.3.4"
@@ -351,6 +366,9 @@
         "version": "v5.3.6"
     },
     "symfony/var-exporter": {
+        "version": "v5.3.4"
+    },
+    "symfony/web-link": {
         "version": "v5.3.4"
     },
     "symfony/web-profiler-bundle": {
