@@ -19,6 +19,13 @@ class ProductsRepository extends ServiceEntityRepository
         parent::__construct($registry, Products::class);
     }
 
+    public function find5Euro(int $id){
+        $qb = $this -> createQueryBuilder('p');
+        $qb -> select('p.name','g.price')
+        -> where ('g.price <=5');
+        return $qb -> getQuery()->getResult();
+    }
+
     // /**
     //  * @return Products[] Returns an array of Products objects
     //  */
