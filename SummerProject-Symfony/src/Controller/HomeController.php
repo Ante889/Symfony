@@ -13,12 +13,30 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(ProductsRepository $pro): Response
+    public function index(ProductsRepository $pro, Request $request): Response
     {
-        $Products= $pro->findAll();
+        $limit= 6;
+
+        $ProductsForCount= $pro->findAll();
+        $Count = ceil(count($ProductsForCount)/$limit);
+
+        $search = "";
+        if($request->isMethod("GET")){
+            $search = $request->get('page');   
+        }
+        if(empty($search) || $search ==1){
+            $offset = 0; 
+        }else{
+            $offset = $limit * $search - $limit;
+        }
+
+        $Products= $pro-> findBy(array(),array(),$limit,$offset);
+
 
         return $this->render('home/index.html.twig', [
-            'Products' => $Products
+            'Products' => $Products,
+            'Count' => $Count,
+            'Page' => $search
         ]);
     }
 

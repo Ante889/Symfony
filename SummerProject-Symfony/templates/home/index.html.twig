@@ -70,14 +70,27 @@
               </div>
           </div>
       </div>
-        <nav aria-label="...">
-          <br>
-                <ul class="pagination">
-                <li class='page-item'><a class='page-link' href='index.php?product&page=$page'>Next</a></li>
-                <li class='page-item'><a class='page-link' href=''>Next</a></li>
-
-                </ul>
-              </nav>
+         <nav aria-label="...">
+        <br>
+              <ul class="pagination">
+                {% if Page > 1 %}
+                  <li class='page-item'><a class='page-link' href='{{ path ('home',{page:Page - 1})}}'>Previous</a></li>
+                {% endif %}
+              
+              {% for i in 1 .. Count %}
+                  {% if Page == i %}
+                   <li class='page-item active'><a class='page-link' href='{{ path ('home',{page:i})}}'>{{i}}</a></li><br>
+                  {% endif %}
+                  {% if Page != i %}
+                   <li class='page-item'><a class='page-link' href='{{ path ('home',{page:i})}}'>{{i}}</a></li><br>
+                  {% endif %}             
+              {% endfor %}
+              {% if Page < Count %}
+                  <li class='page-item'><a class='page-link' href='{{ path ('home',{page:Page + 1})}}'>Next</a></li>
+              {% endif %}
+              
+              </ul>
+            </nav>
   </div>
   
   <!-- End aside -->
