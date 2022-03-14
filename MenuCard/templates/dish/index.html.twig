@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% for message in app.flashes('Success') %}
+<div class= "alert alert-success">
+  <h3>{{message}}</h3>
+</div>
+{% endfor %}
+<br>
+
+<div class="container">
+
+<h2> For employer </h2>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Create</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for dish in dishs %}
+      <tr>
+        <td>{{dish.id}}</td>
+        <td>{{dish.name}}</td>
+        <td>{{dish.discription}}</td>
+        <td>{{dish.price}}</td>
+        <td><a class="btn btn-danger" href= "{{path('edit.delete',{id:dish.id})}}">Delete</a></td>
+        <td><a class="btn btn-success" href= "{{path('edit.create')}}">Create</a></td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+
+{% endblock %}
