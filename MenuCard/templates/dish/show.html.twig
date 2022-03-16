@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<br>
+<div class="container">
+
+<h1>{{dish.name}}</h1>
+<img src="{{asset('img/' ~ dish.image)}}">
+<br><br>
+<a class="btn btn-danger" href="{{path('edit.app_dish')}}">Back</a>
+</div>
+
+{% endblock %}

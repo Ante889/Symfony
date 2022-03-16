@@ -40,12 +40,20 @@ class DishController extends AbstractController
     #[Route('/create', name: 'create')]
     public function create (Request $request) {
         $dish = new Dish();
-        $dish -> setName('Pizza');
         $form = $this->createForm(DishType::class, $dish);
         $form = $form->handleRequest($request);
                
         if ($form->isSubmitted() && $form->isValid()) { 
             $en = $this -> getDoctrine()->getManager();
+            $image = $form->get('image')->getData();
+            if($image) {
+                $filename = md5(uniqid()). '.' . $image->guessExtension();
+            }
+            $image->move(
+                $this->getParameter('img'),
+                $filename
+            );
+            $dish->setImage($filename);
             $en -> persist($dish);
             $en -> flush();
             return $this -> redirect($this->generateUrl('edit.app_dish'));
@@ -53,6 +61,13 @@ class DishController extends AbstractController
         
         return $this->render('dish/create.html.twig', [
             'createForm' => $form->createView(),
+        ]);
+    }
+    #[Route('/show/{id}', name: 'show')]
+    public function show (Dish $dish) {
+
+        return $this->render('dish/show.html.twig', [
+            'dish' => $dish,
         ]);
     }
 }

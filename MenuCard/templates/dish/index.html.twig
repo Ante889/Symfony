@@ -20,6 +20,7 @@
       <th scope="col">Name</th>
       <th scope="col">Description</th>
       <th scope="col">Price</th>
+      <th scope="col">Image</th>
       <th scope="col">Delete</th>
       <th scope="col">Create</th>
     </tr>
@@ -28,9 +29,10 @@
       {% for dish in dishs %}
       <tr>
         <td>{{dish.id}}</td>
-        <td>{{dish.name}}</td>
+         <td><a href= "{{path('edit.show',{id:dish.id})}}">{{dish.name}}</a></td>
         <td>{{dish.discription}}</td>
         <td>{{dish.price}}</td>
+        <td><img src="{{asset('img/' ~ dish.image)}}" alt="Italian Trulli"></td>
         <td><a class="btn btn-danger" href= "{{path('edit.delete',{id:dish.id})}}">Delete</a></td>
         <td><a class="btn btn-success" href= "{{path('edit.create')}}">Create</a></td>
       </tr>
